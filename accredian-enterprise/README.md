@@ -1,36 +1,127 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Accredian Enterprise Page (Assignment Submission)
 
-## Getting Started
+Partial clone of the Accredian Enterprise landing page built with Next.js (App Router), reusable components, responsive sections, and a working lead capture flow.
 
-First, run the development server:
+## Live Demo
+
+- Vercel: `<add-your-vercel-url>`
+
+## Repository
+
+- GitHub: `<add-your-github-repo-url>`
+
+## Tech Stack
+
+- Next.js 16 (App Router)
+- React 19 (functional components + hooks)
+- Tailwind CSS 4
+- API routes (`/api/leads`)
+- Local persistent storage for leads via `nedb-promises`
+
+## Features Implemented
+
+- Responsive landing page sections
+- Navigation + footer with social links
+- Reusable section-based component structure
+- Enquiry modal with validation-ready fields
+- Lead capture API:
+  - `POST /api/leads` to store leads
+  - `GET /api/leads` to fetch leads (supports `?limit=`)
+- Local lead persistence in `.data/leads.db` (ignored from git)
+
+## Project Structure
+
+```text
+src/
+  app/
+    api/leads/route.ts
+  components/
+    EnquiryModal.tsx
+    Footer.tsx
+    sections/
+      AudienceSection.tsx
+      CatSection.tsx
+      EdgeSection.tsx
+      HowItWorksSection.tsx
+      TestimonialsSection.tsx
+  lib/
+    leadStore.ts
+```
+
+## Setup Instructions
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Run development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open in browser:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Test lead API:
 
-## Learn More
+- Submit enquiry form from UI, or
+- Use API directly:
+  - `POST /api/leads`
+  - `GET /api/leads`
+  - `GET /api/leads?limit=20`
 
-To learn more about Next.js, take a look at the following resources:
+## Approach Taken
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Started with modular section components for maintainability.
+- Recreated key homepage sections with assignment-focused visual parity.
+- Prioritized responsiveness and clean spacing for mobile + desktop.
+- Added reusable UI patterns (card layouts, highlighted headings, icon blocks).
+- Implemented a working backend endpoint for lead capture and retrieval.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## AI Usage (Required by Assignment)
 
-## Deploy on Vercel
+AI tools were actively used during development to accelerate implementation and iteration.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Where AI helped
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Translating reference screenshots into Tailwind/React layouts
+- Building/refining reusable section components
+- Iterating typography, spacing, and responsive behavior quickly
+- Implementing and improving API routes for lead capture
+- Updating footer links, social links, and content wiring
+- Drafting and improving this README structure
+
+### What was manually modified/improved
+
+- Fine-tuned UI spacing, font sizes, and visual hierarchy after previews
+- Manually adjusted section content and card layout decisions
+- Chose final component structure and naming
+- Verified responsiveness and corrected mismatches section by section
+- Controlled what should/should not be tracked in git (`.data/leads.db`)
+
+## Deployment (Vercel)
+
+1. Push code to GitHub
+2. Import repository in Vercel
+3. Deploy with default Next.js settings
+4. Add deployment URL under "Live Demo" above
+
+## Improvements With More Time
+
+- Add stronger form validation (phone/email patterns, inline errors)
+- Add admin-protected leads dashboard
+- Persist leads to managed DB (Postgres/Mongo) instead of local file
+- Add unit/integration tests for API and key UI components
+- Improve accessibility (keyboard/ARIA checks and contrast audits)
+- Add analytics and event tracking for CTA + form submissions
+
+## Notes
+
+- `.data/` is intentionally ignored in git to avoid committing local lead data.
+- Social/contact links in footer are updated as requested.
