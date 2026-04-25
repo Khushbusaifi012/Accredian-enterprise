@@ -19,7 +19,6 @@ Partial clone of the Accredian Enterprise landing page built with Next.js (App R
 - Lead capture API:
   - `POST /api/leads` to store leads
   - `GET /api/leads` to fetch leads (supports `?limit=`)
-- Local lead persistence in `.data/leads.db` (ignored from git)
 
 ## Project Structure
 
@@ -71,7 +70,6 @@ http://localhost:3000
 ## Approach Taken
 
 - Started with modular section components for maintainability.
-- Recreated key homepage sections with assignment-focused visual parity.
 - Prioritized responsiveness and clean spacing for mobile + desktop.
 - Added reusable UI patterns (card layouts, highlighted headings, icon blocks).
 - Implemented a working backend endpoint for lead capture and retrieval.
@@ -79,7 +77,6 @@ http://localhost:3000
 ### What was manually modified/improved
 
 - Fine-tuned UI spacing, font sizes, and visual hierarchy after previews
-- Manually adjusted section content and card layout decisions
 - Chose final component structure and naming
 - Verified responsiveness and corrected mismatches section by section
 
