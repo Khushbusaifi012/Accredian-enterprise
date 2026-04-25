@@ -1,5 +1,6 @@
 import Datastore from "nedb-promises";
 import { mkdirSync } from "node:fs";
+import { dirname } from "node:path";
 
 export type LeadRecord = {
   name: string;
@@ -13,10 +14,12 @@ export type LeadRecord = {
   createdAt: string;
 };
 
-mkdirSync(".data", { recursive: true });
+const isVercel = process.env.VERCEL === "1";
+const dbFile = isVercel ? "/tmp/leads.db" : ".data/leads.db";
+mkdirSync(dirname(dbFile), { recursive: true });
 
 const db = Datastore.create({
-  filename: ".data/leads.db",
+  filename: dbFile,
   autoload: true,
   timestampData: true,
 });

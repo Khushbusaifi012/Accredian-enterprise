@@ -51,7 +51,15 @@ export async function POST(req: Request) {
     createdAt: new Date().toISOString(),
   };
 
-  await insertLead(lead);
+  try {
+    await insertLead(lead);
+  } catch (error) {
+    console.error("Lead save failed:", error);
+    return NextResponse.json(
+      { ok: false, message: "Unable to save lead right now. Please try again." },
+      { status: 500 },
+    );
+  }
 
   return NextResponse.json({
     ok: true,
@@ -66,12 +74,20 @@ export async function GET(req: Request) {
     ? Math.min(Math.max(Math.trunc(limitParam), 1), 500)
     : 100;
 
-  const leads = await listLeads(limit);
+  try {
+    const leads = await listLeads(limit);
 
-  return NextResponse.json({
-    ok: true,
-    count: leads.length,
-    leads,
-  });
+    return NextResponse.json({
+      ok: true,
+      count: leads.length,
+      leads,
+    });
+  } catch (error) {
+    console.error("Lead list failed:", error);
+    return NextResponse.json(
+      { ok: false, message: "Unable to fetch leads right now." },
+      { status: 500 },
+    );
+  }
 }
 
