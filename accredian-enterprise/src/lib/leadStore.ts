@@ -1,6 +1,6 @@
 import Datastore from "nedb-promises";
 import { mkdirSync } from "node:fs";
-import { dirname } from "node:path";
+import { dirname, join } from "node:path";
 
 export type LeadRecord = {
   name: string;
@@ -15,8 +15,13 @@ export type LeadRecord = {
 };
 
 const isVercel = process.env.VERCEL === "1";
-const dbFile = isVercel ? "/tmp/leads.db" : ".data/leads.db";
+// Use cwd so the path is always explicit (same file the API reads and writes).
+const dbFile = isVercel ? "/tmp/leads.db" : join(process.cwd(), ".data", "leads.db");
 mkdirSync(dirname(dbFile), { recursive: true });
+
+if (process.env.NODE_ENV === "development" && !isVercel) {
+  console.log("[leads] persisting to:", dbFile);
+}
 
 const db = Datastore.create({
   filename: dbFile,
