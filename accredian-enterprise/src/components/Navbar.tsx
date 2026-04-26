@@ -37,9 +37,8 @@ export function Navbar({
           className="flex items-center gap-2 font-semibold tracking-tight"
           aria-label="Go to home"
         >
-          <span className="text-blue-700">accredian</span>
-          <span className="hidden text-xs font-medium text-slate-500 sm:inline">
-            enterprise
+          <span className="text-base text-blue-700 sm:text-lg">
+            Accredian-Enterprise
           </span>
         </button>
 
