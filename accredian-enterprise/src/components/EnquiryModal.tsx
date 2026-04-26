@@ -32,6 +32,9 @@ const domains = [
 
 const modes = ["Online", "Offline", "Hybrid"];
 
+const fieldBox =
+  "h-11 w-full rounded-md border border-slate-200 px-3 text-sm text-slate-900 outline-none focus:ring-2 focus:ring-blue-500";
+
 export function EnquiryModal({ open, onClose }: Props) {
   const initial = useMemo<FormState>(
     () => ({
@@ -107,16 +110,17 @@ export function EnquiryModal({ open, onClose }: Props) {
     >
       <div className="w-full max-w-4xl overflow-hidden rounded-xl bg-white shadow-2xl">
         <div className="grid md:grid-cols-2">
-          <div className="relative hidden md:block">
+          <div className="relative hidden min-h-[min(100%,20rem)] md:block">
             <Image
               src="/discussion.jpg"
               alt="Team discussion presentation"
               fill
               className="object-cover"
+              sizes="(max-width: 768px) 0px, 50vw"
             />
           </div>
 
-          <div className="p-6 sm:p-8">
+          <div className="max-h-[min(90vh,720px)] overflow-y-auto p-6 sm:p-8">
             <div className="flex items-start justify-between gap-4">
               <h3 className="text-lg font-bold tracking-tight text-slate-900">
                 Enquire Now
@@ -136,7 +140,7 @@ export function EnquiryModal({ open, onClose }: Props) {
                 value={form.name}
                 onChange={(e) => update("name", e.target.value)}
                 placeholder="Enter Name"
-                className="h-11 w-full rounded-md border border-slate-200 px-3 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                className={fieldBox}
                 required
               />
               <input
@@ -144,11 +148,11 @@ export function EnquiryModal({ open, onClose }: Props) {
                 onChange={(e) => update("email", e.target.value)}
                 placeholder="Enter Email"
                 type="email"
-                className="h-11 w-full rounded-md border border-slate-200 px-3 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                className={fieldBox}
                 required
               />
               <div className="flex gap-2">
-                <div className="flex h-11 items-center gap-2 rounded-md border border-slate-200 px-3 text-sm text-slate-600">
+                <div className="flex h-11 shrink-0 items-center gap-2 rounded-md border border-slate-200 px-3 text-sm text-slate-600">
                   <span>🇮🇳</span>
                   <span>+91</span>
                 </div>
@@ -157,7 +161,7 @@ export function EnquiryModal({ open, onClose }: Props) {
                   onChange={(e) => update("phone", e.target.value)}
                   placeholder="Phone number"
                   inputMode="numeric"
-                  className="h-11 w-full rounded-md border border-slate-200 px-3 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                  className={fieldBox}
                 />
               </div>
 
@@ -165,13 +169,13 @@ export function EnquiryModal({ open, onClose }: Props) {
                 value={form.company}
                 onChange={(e) => update("company", e.target.value)}
                 placeholder="Enter company name"
-                className="h-11 w-full rounded-md border border-slate-200 px-3 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                className={fieldBox}
               />
 
               <select
                 value={form.domain}
                 onChange={(e) => update("domain", e.target.value)}
-                className="h-11 w-full rounded-md border border-slate-200 bg-white px-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-500"
+                className={`${fieldBox} bg-white text-slate-700`}
               >
                 <option value="">Select Domain</option>
                 {domains.map((d) => (
@@ -186,13 +190,13 @@ export function EnquiryModal({ open, onClose }: Props) {
                 onChange={(e) => update("candidates", e.target.value)}
                 placeholder="Enter No. of candidates"
                 inputMode="numeric"
-                className="h-11 w-full rounded-md border border-slate-200 px-3 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                className={fieldBox}
               />
 
               <select
                 value={form.mode}
                 onChange={(e) => update("mode", e.target.value)}
-                className="h-11 w-full rounded-md border border-slate-200 bg-white px-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-500"
+                className={`${fieldBox} bg-white text-slate-700`}
                 required
               >
                 <option value="">Select Mode of Delivery *</option>
@@ -207,7 +211,7 @@ export function EnquiryModal({ open, onClose }: Props) {
                 value={form.location}
                 onChange={(e) => update("location", e.target.value)}
                 placeholder="Eg: Gurugram, Delhi, India"
-                className="h-11 w-full rounded-md border border-slate-200 px-3 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                className={fieldBox}
               />
 
               {status !== "idle" ? (
@@ -238,4 +242,3 @@ export function EnquiryModal({ open, onClose }: Props) {
     </div>
   );
 }
-
