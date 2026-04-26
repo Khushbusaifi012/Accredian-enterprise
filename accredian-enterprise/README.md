@@ -76,7 +76,6 @@ npm run dev
 This project was developed with assistance from **AI tools** (as encouraged by the assignment), mainly:
 
 - **Cursor** — scaffolding components, refactors, TypeScript and Tailwind patterns, and quicker iteration on layout and files.
-- **ChatGPT (or similar)** — drafting and tightening UI copy, sanity-checking API shape and README wording, and brainstorming structure.
 
 **What was improved manually** — I reviewed and edited all AI-generated code and text: final layout and spacing, component boundaries, which sections appear in the nav, accessibility touches (e.g. labels, semantics), copy tone, and verification that the app runs and deploys on Vercel. AI sped up implementation; design and integration decisions are mine.
 
