@@ -90,7 +90,6 @@ This project was developed with assistance from **AI tools** (as encouraged by t
 
 - **Design** — Tighter visual parity with the reference, motion/micro-interactions, imagery optimization, and a more polished mobile menu.
 - **Database** — Persistent leads with a hosted DB, optional admin view behind auth, and email notifications on new leads.
-- **Testing** — Unit tests for `leadStore` and API validation; Playwright or Cypress for critical user flows.
 
 ## License / attribution
 
