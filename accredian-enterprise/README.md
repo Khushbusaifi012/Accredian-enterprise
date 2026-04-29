@@ -1,6 +1,6 @@
 # Accredian Enterprise Page
 
-Partial clone of the [Accredian Enterprise](https://enterprise.accredian.com/) landing page built with Next.js (App Router), reusable components, responsive sections, and a working lead capture flow (assignment: Full Stack Developer Intern – Accredian).
+Partial clone of the [Accredian Enterprise](https://enterprise.accredian.com/) landing page built with Next.js (App Router), reusable components, responsive sections, and a working lead capture flow.
 
 ## Links
 
@@ -71,26 +71,9 @@ npm run dev
 - Centralized section order and nav labels in `siteData` so the landing page and menu stay in sync.
 - Exposed lead capture through **Next.js Route Handlers** and validated payloads before saving.
 
-## AI Usage
-
-This project was developed with assistance from **AI tools** (as encouraged by the assignment), mainly:
-
-- **Cursor** — scaffolding components, refactors, TypeScript and Tailwind patterns, and quicker iteration on layout and files.
-
-**What was improved manually** — I reviewed and edited all AI-generated code and text: final layout and spacing, component boundaries, which sections appear in the nav, accessibility touches (e.g. labels, semantics), copy tone, and verification that the app runs and deploys on Vercel. AI sped up implementation; design and integration decisions are mine.
-
 ## Limitations
 
 - **Lead storage on Vercel (production):** The app uses a **file-based** NeDB store. On serverless (e.g. Vercel), the database path is under ephemeral storage, so **leads are not reliably durable** long term — data can be lost when instances rotate or after deploys. This is a known constraint of this stack, not a feature.
 - **Local development:** `GET /api/leads` and `.data/leads.db` are useful for **demo and local testing**; do not treat the production file store as a long-term CRM for real users without changing the backend.
 
 **Strong next step (bonus for production):** replace file storage with a **real database** (e.g. Vercel Postgres, Neon, Supabase, or MongoDB Atlas) and store leads there from the same API route.
-
-## Future Improvements (with more time)
-
-- **Design** — Tighter visual parity with the reference, motion/micro-interactions, imagery optimization, and a more polished mobile menu.
-- **Database** — Persistent leads with a hosted DB, optional admin view behind auth, and email notifications on new leads.
-
-## License / attribution
-
-This is an educational / assignment project. “Accredian” branding and reference content are used for learning purposes; the live reference site is [enterprise.accredian.com](https://enterprise.accredian.com/).
