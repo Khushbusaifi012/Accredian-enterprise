@@ -15,7 +15,6 @@ export type LeadRecord = {
 };
 
 const isVercel = process.env.VERCEL === "1";
-// Use cwd so the path is always explicit (same file the API reads and writes).
 const dbFile = isVercel ? "/tmp/leads.db" : join(process.cwd(), ".data", "leads.db");
 mkdirSync(dirname(dbFile), { recursive: true });
 

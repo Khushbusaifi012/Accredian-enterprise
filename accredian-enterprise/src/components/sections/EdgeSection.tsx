@@ -63,7 +63,6 @@ export function EdgeSection(props: SectionProps) {
           </p>
         </div>
 
-        {/* Desktop: horizontal timeline (closer to reference) */}
         <div className="mt-12 hidden md:block">
           <div className="relative mx-auto max-w-6xl">
             <div className="flex items-start justify-between gap-5 px-2">
@@ -125,7 +124,6 @@ export function EdgeSection(props: SectionProps) {
           </div>
         </div>
 
-        {/* Mobile: stacked cards (clean + readable) */}
         <div className="mt-10 grid gap-4 md:hidden">
           {timeline.map((t) => (
             <div
